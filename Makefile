@@ -80,7 +80,7 @@ info:
 	$(info $(OBJECTS_FILES))
 
 $(OBJSUBDIRS): 
-	$(MKDIR) $(OBJSUBDIRS) 
+	$(MKDIR) $(OBJSUBDIRS) > /dev/null 2>&1
 
 clean:
 	if [ $(FIND_RESULTS) -gt 0 ]; then \
