@@ -23,7 +23,7 @@ define PRINTFAIL
 endef
 
 ######################################################################
-# CONFIG  
+# CONFIG
 ######################################################################
 
 red		=\033[0;31m
@@ -51,15 +51,15 @@ TERMINAL_COLS_SIZE      :=$(shell tput cols)
 TERMIANL_HALF_COLS_SIZE :=$$(($(TERMINAL_COLS_SIZE) / 2 - 10))
 
 .PHONY: info clean project
-.SILENT: clean $(APP) $(OBJECTS_FILES) 
+.SILENT: clean $(APP) $(OBJECTS_FILES) $(OBJSUBDIRS)
 
-$(APP): $(OBJSUBDIRS) $(OBJECTS_FILES) 
+$(APP): $(OBJSUBDIRS) $(OBJECTS_FILES)
 	if [ -d "bin" ]; then \
 		$(CC) -o $(APP) $(OBJECTS_FILES) $(CCFLAGAS); \
 	else \
 		mkdir -p bin; \
 		$(CC) -o $(APP) $(OBJECTS_FILES) $(CCFLAGAS); \
-	fi 
+	fi
 
 	$(call PRINTOK,"Enlazando $(APP)")
 
@@ -79,7 +79,7 @@ info:
 	$(info $(ALLCPPS))
 	$(info $(OBJECTS_FILES))
 
-$(OBJSUBDIRS): 
+$(OBJSUBDIRS):
 	$(MKDIR) $(OBJSUBDIRS) > /dev/null 2>&1
 
 clean:
